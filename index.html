@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Scan 😈</title>
+
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #111;
+        color: white;
+        font-family: Tahoma, sans-serif;
+    }
+
+    .box {
+        width: 90%;
+        max-width: 450px;
+        text-align: center;
+        background: #1d1d1d;
+        padding: 35px 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(255,0,0,.25);
+    }
+
+    h1 {
+        color: #ff4444;
+    }
+
+    #status {
+        margin: 25px 0;
+        font-size: 20px;
+    }
+
+    .bar {
+        height: 18px;
+        background: #333;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    #progress {
+        width: 0%;
+        height: 100%;
+        background: #ff3333;
+        transition: width .2s;
+    }
+
+    #result {
+        display: none;
+        font-size: 24px;
+        line-height: 1.8;
+    }
+
+    .emoji {
+        font-size: 55px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <div id="scan">
+        <div class="emoji">🛡️</div>
+        <h1>در حال اسکن دستگاه...</h1>
+
+        <div id="status">آماده‌سازی اسکن...</div>
+
+        <div class="bar">
+            <div id="progress"></div>
+        </div>
+    </div>
+
+    <div id="result">
+        <div class="emoji">😂</div>
+        <h1>گولت زدم!</h1>
+        <p>هیچ اطلاعاتی از دستگاهت گرفته نشد.</p>
+        <p>این فقط یه شوخی بود ❤️</p>
+    </div>
+</div>
+
+<script>
+let progress = 0;
+
+const messages = [
+    "در حال بررسی فایل‌ها...",
+    "در حال بررسی تصاویر...",
+    "در حال بررسی برنامه‌ها...",
+    "در حال بررسی اطلاعات شخصی...",
+    "تقریباً تمام شد... 😈"
+];
+
+const status = document.getElementById("status");
+const bar = document.getElementById("progress");
+const scan = document.getElementById("scan");
+const result = document.getElementById("result");
+
+const timer = setInterval(() => {
+    progress += Math.floor(Math.random() * 8) + 3;
+
+    if (progress >= 100) {
+        progress = 100;
+        bar.style.width = "100%";
+        status.textContent = "اسکن کامل شد! 😈";
+
+        clearInterval(timer);
+
+        setTimeout(() => {
+            scan.style.display = "none";
+            result.style.display =  } "block";
+        }, 1200);
+
+        return;
+    }
+
+    bar.style.width = progress + "%";
+    status.textContent =
+        messages[Math.min(
+            Math.floor(progress / 20),
+            messages.length - 1
+        )];
+}, 450);
+</script>
+
+</body>
+</html>      ([
